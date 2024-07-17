@@ -1,0 +1,69 @@
+.card{
+    height: 355px;
+    width: 290px;
+    padding: 5px;
+    border-radius: 15px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 5px rgb(49, 49, 49);
+}
+.imgc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    gap: 30px;
+    padding-bottom: 5px;
+}
+.dec{
+    display: grid;
+    justify-content:center;
+    align-items: start;
+    gap: 12px;
+    padding: 20px;
+}
+.img{
+    height: 90px;
+    width: 90px;
+    border-radius: 50px;
+}
+.head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+.p{
+  padding-left: 10px;
+}
+.location{
+    display: flex;
+}
+.btn{
+    background-color: rgb(10, 167, 10);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 5px;
+    gap: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.wht{
+    background-color: transparent;
+    padding-right: 5px;
+    font-size: 20px;
+}
+.jdes{
+    background-color: rgb(226, 55, 112);
+    border-radius: 10px;
+    padding: 8px;
+    color: aliceblue;
+    cursor: pointer;
+}
+.cardlogo{
+    font-size: 20px;
+}
