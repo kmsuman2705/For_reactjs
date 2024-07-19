@@ -11,7 +11,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
-import section4Image from "../../assets/images/OnCampus/section4.png"; // Adjust the path as needed
+import section4Image from "../../../assets/images/OnCampus/section4.png"; // Adjust the path as needed
 
 const Section4 = () => {
   return (

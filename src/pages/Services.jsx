@@ -1,5 +1,5 @@
 import React from 'react';
-import OnCampus from '../components/Service/OnCampus';
+import OnCampus from '../components/Service/OnCampus/OnCampus';
 
 const Services = () => {
     return (

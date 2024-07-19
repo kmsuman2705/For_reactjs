@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop.jsx"; // Import the ScrollToTop component
 import Home from "./pages/Home.jsx";
 import Services from "./pages/Services.jsx";
-import OnCampus from "./components/Service/OnCampus.jsx";
+
 import Jobs from "./pages/Jobs.jsx";
 import PostResume from "./components/Jobs/PostResume.jsx";
 import CurrentOpening from "./components/Jobs/Openings/Opening.jsx";
@@ -28,7 +28,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/services/oncampus" Component={<OnCampus />} />
+         
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/post-resume" element={<PostResume />} />
           <Route path="/jobs/current-opening" element={<CurrentOpening />} />
