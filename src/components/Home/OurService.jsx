@@ -21,8 +21,9 @@ import {
   FcBriefcase,
   FcGlobe
 } from "react-icons/fc";
+import { HashLink as Link } from "react-router-hash-link"; 
 
-const Card = ({ heading, description, icon }) => {
+const Card = ({ heading, description, icon, link }) => {
   return (
     <Box
       maxW={{ base: "full", md: "275px" }}
@@ -36,31 +37,41 @@ const Card = ({ heading, description, icon }) => {
       transition="transform 0.3s, box-shadow 0.3s"
       _hover={{ transform: "scale(1.05)", boxShadow: "2xl" }}
     >
-      <Stack align={"center"} spacing={2}>
-        <Flex
-          w={16}
-          h={16}
-          align={"center"}
-          justify={"center"}
-          color={"white"}
-          rounded={"full"}
-          bg={useColorModeValue("gray.100", "gray.700")}
-          mb={2}
-        >
-          {icon}
-        </Flex>
-        <Box textAlign="center">
-          <Heading size="md" color="#7877e6ff">
-            {heading}
-          </Heading>
-          <Text mt={1} fontSize={"sm"} color={"gray.600"}>
-            {description}
-          </Text>
+      <Flex direction="column" justify="space-between" h="100%">
+        <Stack align={"center"} spacing={2}>
+          <Flex
+            w={16}
+            h={16}
+            align={"center"}
+            justify={"center"}
+            color={"white"}
+            rounded={"full"}
+            bg={useColorModeValue("gray.100", "gray.700")}
+            mb={2}
+          >
+            {icon}
+          </Flex>
+          <Box textAlign="center">
+            <Heading size="md" color="#7877e6ff">
+              {heading}
+            </Heading>
+            <Text mt={1} fontSize={"sm"} color={"gray.600"}>
+              {description}
+            </Text>
+          </Box>
+        </Stack>
+        <Box textAlign="center" mt="auto">
+          <Button 
+            as={Link}
+            to={link}
+            variant={"link"}
+            colorScheme={"blue"}
+            size={"sm"}
+          >
+            Learn more
+          </Button>
         </Box>
-        <Button variant={"link"} colorScheme={"blue"} size={"sm"} >
-          Learn more
-        </Button>
-      </Stack>
+      </Flex>
     </Box>
   );
 };
@@ -86,6 +97,7 @@ export default function OurServices() {
             description={
               "Our OnCampus service brings career opportunities directly to students, connecting them with top employers through campus recruitment drives and job events."
             }
+            link="/services#oncampus" // Link to the OnCampus page
           />
           <Card
             heading={"OffCampus"}
@@ -93,27 +105,7 @@ export default function OurServices() {
             description={
               "TalentConnect's Off Campus service offers a platform for recent graduates to explore diverse career opportunities."
             }
-          />
-          <Card
-            heading={"Seminar"}
-            icon={<Icon as={FcCollaboration} w={10} h={10} />}
-            description={
-              "Our seminars provide valuable insights on various career-related topics, led by industry experts."
-            }
-          />
-          <Card
-            heading={"Counselling"}
-            icon={<Icon as={FcAssistant} w={10} h={10} />}
-            description={
-              "Personalized career counseling services to help you navigate your career path."
-            }
-          />
-          <Card
-            heading={"CareerCraft"}
-            icon={<Icon as={FcReading} w={10} h={10} />}
-            description={
-              "CareerCraft is focused on skill development and career readiness through workshops and mentorship."
-            }
+            link="/services#offcampus"
           />
           <Card
             heading={"Workforce Provider"}
@@ -121,6 +113,31 @@ export default function OurServices() {
             description={
               "Our Workforce Provider service offers tailored staffing solutions to connect employers with top talent."
             }
+            link="/services#workforce"
+          />
+          <Card
+            heading={"Seminar"}
+            icon={<Icon as={FcCollaboration} w={10} h={10} />}
+            description={
+              "Our seminars provide valuable insights on various career-related topics, led by industry experts."
+            }
+            link="/services#seminar"
+          />
+          <Card
+            heading={"Counselling"}
+            icon={<Icon as={FcAssistant} w={10} h={10} />}
+            description={
+              "Personalized career counseling services to help you navigate your career path."
+            }
+            link="/services#counselling"
+          />
+          <Card
+            heading={"CareerCraft"}
+            icon={<Icon as={FcReading} w={10} h={10} />}
+            description={
+              "CareerCraft is focused on skill development and career readiness through workshops and mentorship."
+            }
+            link="/services#careercraft"
           />
         </Flex>
       </Container>

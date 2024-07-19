@@ -16,6 +16,7 @@ import {
   InputGroup,
   InputLeftElement,
   Textarea,
+  Select,  // Import Select component from Chakra UI
 } from "@chakra-ui/react";
 import { MdPhone, MdEmail, MdLocationOn, MdOutlineEmail } from "react-icons/md";
 import {
@@ -138,6 +139,14 @@ export default function ContactForm() {
                 <Box bg="white" borderRadius="lg">
                   <Box m={8} color="#0B0E3F">
                     <VStack spacing={5}>
+                      <FormControl id="userType">
+                        <FormLabel>Are you a student, campus, or company?</FormLabel>
+                        <Select placeholder="Select option">
+                          <option value="student">Student</option>
+                          <option value="campus">Campus</option>
+                          <option value="company">Company</option>
+                        </Select>
+                      </FormControl>
                       <FormControl id="name">
                         <FormLabel>Your Name</FormLabel>
                         <InputGroup borderColor="#E0E1E7">

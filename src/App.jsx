@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop.jsx"; // Import the ScrollToTop component
 import Home from "./pages/Home.jsx";
 import Services from "./pages/Services.jsx";
+import OnCampus from "./components/Service/OnCampus.jsx";
 import Jobs from "./pages/Jobs.jsx";
 import PostResume from "./components/Jobs/PostResume.jsx";
 import CurrentOpening from "./components/Jobs/Openings/Opening.jsx";
@@ -14,6 +15,7 @@ import Affiliate from "./pages/Affiliate.jsx";
 import Contact from "./pages/Contact.jsx";
 import Header from "./components/Header/Header.jsx"; // Import Header
 import Footer from "./components/Footer.jsx"; // Import Footer
+
 
 const NotFound = () => <div>Page Not Found</div>; // Fallback component
 
@@ -26,6 +28,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/oncampus" Component={<OnCampus />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/post-resume" element={<PostResume />} />
           <Route path="/jobs/current-opening" element={<CurrentOpening />} />

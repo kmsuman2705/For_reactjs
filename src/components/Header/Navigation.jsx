@@ -24,7 +24,7 @@ const NAV_ITEMS = [
       { label: "OnCampus", href: "/services#oncampus" },
       { label: "Offcampus", href: "/services#offcampus" },
       { label: "Seminar", href: "/services#seminar" },
-      { label: "Counselling", href: "/services#counseling" },
+      { label: "Counselling", href: "/services#counselling" },
       { label: "CareerCraft", href: "/services#careercraft" },
       {
         label: "Workforce provider",
