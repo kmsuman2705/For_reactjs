@@ -21,7 +21,7 @@ const NAV_ITEMS = [
     label: "Service",
     href: "/#our-services",
     children: [
-      { label: "OnCampus", href: "/services#oncampus" },
+      { label: "OnCampus", href: "/oncampus" },
       { label: "Offcampus", href: "/services#offcampus" },
       { label: "Seminar", href: "/services#seminar" },
       { label: "Counselling", href: "/services#counselling" },

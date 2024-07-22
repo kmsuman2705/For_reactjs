@@ -4,8 +4,8 @@ import OnCampus from '../components/Service/OnCampus/OnCampus';
 const Services = () => {
     return (
         <div>
-            <OnCampus />
-            {/* Your College component content */}
+            
+            {/* <OnCampus /> Your College component content */}
         </div>
     );
 };

@@ -1,4 +1,4 @@
-"use client";
+
 
 import {
   Box,
@@ -97,7 +97,7 @@ export default function OurServices() {
             description={
               "Our OnCampus service brings career opportunities directly to students, connecting them with top employers through campus recruitment drives and job events."
             }
-            link="/services#oncampus" // Link to the OnCampus page
+            link="/oncampus" // Link to the OnCampus page
           />
           <Card
             heading={"OffCampus"}

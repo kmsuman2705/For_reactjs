@@ -37,6 +37,7 @@ export default function Footer() {
       bg={useColorModeValue("gray.50", "gray.800")}
       color={useColorModeValue("gray.700", "gray.200")}
       py={10}
+      mt={10}
     >
       <Container maxW="6xl">
         <SimpleGrid
@@ -79,7 +80,7 @@ export default function Footer() {
               Services
             </Text>
             <Stack spacing={1}>
-              <Text as={Link} to="/services#oncampus">
+              <Text as={Link} to="/oncampus">
                 OnCampus
               </Text>
               <Text as={Link} to="/services#offcampus">

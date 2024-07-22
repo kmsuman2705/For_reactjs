@@ -1,9 +1,13 @@
 import React from 'react';
 
+import CampusToCubicleInfo from '../components/CampusToCubicle/CampusToCubicleInfo';
+
 const CampusToCubicle = () => {
     return (
         <div>
             {/* Your component content */}
+            
+            <CampusToCubicleInfo />
         </div>
     );
 };

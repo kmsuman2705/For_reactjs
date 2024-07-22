@@ -10,7 +10,17 @@ import {
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
+
 export default function CampusToCubicle() {
+  const handleGetStartedClick = () => {
+    setTimeout(() => {
+    const connectusSection = document.getElementById('connectus');
+    if (connectusSection) {
+      connectusSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 10); // Increase delay if needed
+};
+
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }} mt={10}>
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
@@ -52,17 +62,21 @@ export default function CampusToCubicle() {
             transition of fresh graduates into professional roles.
           </Text>
           <Stack direction={{ base: "column", md: "row" }} spacing={4}>
-            <Button
-              as={RouterLink}
-              to="/jobs/post-resume"
-              rounded={"full"}
-              bg={"blue.400"}
-              color={"white"}              
-              _hover={{ transform: "scale(1.05)", boxShadow: "lg" }}
+           <Button
+                as={RouterLink}
+                to="/campus-to-cubicle#connectus"
+                rounded={"full"}
+                bg={"blue.400"}
+                color={"white"}
+                _hover={{ transform: "scale(1.05)", boxShadow: "lg" }}
+                onClick={handleGetStartedClick}
             >
-              Get Started
+                Get Started
             </Button>
-            <Button rounded={"full"} 
+            <Button 
+              as={RouterLink}
+              to="/campus-to-cubicle"
+              rounded={"full"} 
               _hover={{ transform: "scale(1.05)", boxShadow: "lg" }}
               >
                 Learn More

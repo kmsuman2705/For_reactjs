@@ -15,6 +15,9 @@ import Affiliate from "./pages/Affiliate.jsx";
 import Contact from "./pages/Contact.jsx";
 import Header from "./components/Header/Header.jsx"; // Import Header
 import Footer from "./components/Footer.jsx"; // Import Footer
+import CollegeForm from "./components/CampusToCubicle/CollegeForm.jsx";
+import CompanyForm from "./components/CampusToCubicle/CompanyForm.jsx";
+import OnCampus from "./components/Service/OnCampus/OnCampus.jsx";
 
 
 const NotFound = () => <div>Page Not Found</div>; // Fallback component
@@ -28,15 +31,25 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/oncampus" element={<OnCampus />} />
          
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/post-resume" element={<PostResume />} />
           <Route path="/jobs/current-opening" element={<CurrentOpening />} />
+
           <Route path="/employer" element={<Employer />} />
+
           <Route path="/college" element={<College />} />
+
           <Route path="/campus-to-cubicle" element={<CampusToCubicle />} />
+          <Route path="/college-form" element={<CollegeForm />} />
+          <Route path="/company-form" element={<CompanyForm />} />
+          
+
           <Route path="/affiliate" element={<Affiliate />} />
+
           <Route path="/contact" element={<Contact />} />
+
           <Route path="*" element={<NotFound />} /> {/* Fallback route */}
         </Routes>
         <Footer /> {/* Render Footer at the bottom of all pages */}
