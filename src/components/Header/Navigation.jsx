@@ -22,10 +22,10 @@ const NAV_ITEMS = [
     href: "/#our-services",
     children: [
       { label: "OnCampus", href: "/oncampus" },
-      { label: "Offcampus", href: "/services#offcampus" },
+      { label: "Offcampus", href: "/offcampus" },
       { label: "Seminar", href: "/services#seminar" },
       { label: "Counselling", href: "/services#counselling" },
-      { label: "CareerCraft", href: "/services#careercraft" },
+      { label: "CareerCraft", href: "/careercraft" },
       {
         label: "Workforce provider",
         subLabel: "Staffing solution",

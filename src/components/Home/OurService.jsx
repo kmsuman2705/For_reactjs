@@ -105,7 +105,7 @@ export default function OurServices() {
             description={
               "TalentConnect's Off Campus service offers a platform for recent graduates to explore diverse career opportunities."
             }
-            link="/services#offcampus"
+            link="/offcampus"
           />
           <Card
             heading={"Workforce Provider"}
@@ -137,7 +137,7 @@ export default function OurServices() {
             description={
               "CareerCraft is focused on skill development and career readiness through workshops and mentorship."
             }
-            link="/services#careercraft"
+            link="/careercraft"
           />
         </Flex>
       </Container>

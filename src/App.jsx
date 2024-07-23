@@ -18,6 +18,8 @@ import Footer from "./components/Footer.jsx"; // Import Footer
 import CollegeForm from "./components/CampusToCubicle/CollegeForm.jsx";
 import CompanyForm from "./components/CampusToCubicle/CompanyForm.jsx";
 import OnCampus from "./components/Service/OnCampus/OnCampus.jsx";
+import OffCampus from "./components/Service/OffCampus/OffCampus.jsx";
+
 
 
 const NotFound = () => <div>Page Not Found</div>; // Fallback component
@@ -32,6 +34,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/oncampus" element={<OnCampus />} />
+          <Route path="/offcampus" element={<OffCampus />} />
+        
          
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/post-resume" element={<PostResume />} />
