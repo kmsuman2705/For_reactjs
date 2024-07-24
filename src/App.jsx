@@ -19,6 +19,8 @@ import CollegeForm from "./components/CampusToCubicle/CollegeForm.jsx";
 import CompanyForm from "./components/CampusToCubicle/CompanyForm.jsx";
 import OnCampus from "./components/Service/OnCampus/OnCampus.jsx";
 import OffCampus from "./components/Service/OffCampus/OffCampus.jsx";
+import CareerCraft from "./components/Service/CareerCraft/CareerCraft.jsx";
+
 
 
 
@@ -35,6 +37,7 @@ const App = () => {
           <Route path="/services" element={<Services />} />
           <Route path="/oncampus" element={<OnCampus />} />
           <Route path="/offcampus" element={<OffCampus />} />
+          <Route path="/careercraft" element={<CareerCraft />} />
         
          
           <Route path="/jobs" element={<Jobs />} />
