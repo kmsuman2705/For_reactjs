@@ -19,6 +19,10 @@ import CollegeForm from "./components/CampusToCubicle/CollegeForm.jsx";
 import CompanyForm from "./components/CampusToCubicle/CompanyForm.jsx";
 import OnCampus from "./components/Service/OnCampus/OnCampus.jsx";
 import OffCampus from "./components/Service/OffCampus/OffCampus.jsx";
+import Seminar from "./components/Service/Seminar/Seminar.jsx"
+import Counselling from "./components/Service/Counselling/Counselling.jsx"
+import Workforce from "./components/Service/Workforce/Workforce.jsx"
+import CareerCraft from "./components/Service/CareerCraft/CareerCraft.jsx"
 
 
 
@@ -35,6 +39,10 @@ const App = () => {
           <Route path="/services" element={<Services />} />
           <Route path="/oncampus" element={<OnCampus />} />
           <Route path="/offcampus" element={<OffCampus />} />
+          <Route path="/seminar" element={<Seminar />} />
+          <Route path="/counselling" element={<Counselling />} />
+          <Route path="/careercraft" element={<OffCampus />} />
+          <Route path="/workforce" element={<Workforce />} />
         
          
           <Route path="/jobs" element={<Jobs />} />
