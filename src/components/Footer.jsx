@@ -86,16 +86,16 @@ export default function Footer() {
               <Text as={Link} to="/offcampus">
                 OffCampus
               </Text>
-              <Text as={Link} to="/services#seminar">
+              <Text as={Link} to="/seminar">
                 Seminar
               </Text>
-              <Text as={Link} to="/services#counselling">
+              <Text as={Link} to="/counselling">
                 Counselling
               </Text>
               <Text as={Link} to="/careercraft">
                 CareerCraft
               </Text>
-              <Text as={Link} to="/services#workforce">
+              <Text as={Link} to="/workforce">
                 Workforce Provider [Staffing Solution]
               </Text>
             </Stack>
