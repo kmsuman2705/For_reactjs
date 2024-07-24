@@ -23,13 +23,13 @@ const NAV_ITEMS = [
     children: [
       { label: "OnCampus", href: "/oncampus" },
       { label: "Offcampus", href: "/offcampus" },
-      { label: "Seminar", href: "/services#seminar" },
-      { label: "Counselling", href: "/services#counselling" },
+      { label: "Seminar", href: "/seminar" },
+      { label: "Counselling", href: "/counselling" },
       { label: "CareerCraft", href: "/careercraft" },
       {
         label: "Workforce provider",
         subLabel: "Staffing solution",
-        href: "/services#workforce",
+        href: "/workforce",
       },
     ],
   },
