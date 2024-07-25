@@ -1,9 +1,10 @@
 import React from 'react';
+import EmployerInfo from '../components/Employer/EmployerInfo';
 
 const Employer = () => {
     return (
         <div>
-            {/* Your College component content */}
+          <EmployerInfo/>
         </div>
     );
 };

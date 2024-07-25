@@ -113,7 +113,7 @@ export default function OurServices() {
             description={
               "Our Workforce Provider service offers tailored staffing solutions to connect employers with top talent."
             }
-            link="/services#workforce"
+            link="/workforce"
           />
           <Card
             heading={"Seminar"}
@@ -121,7 +121,7 @@ export default function OurServices() {
             description={
               "Our seminars provide valuable insights on various career-related topics, led by industry experts."
             }
-            link="/services#seminar"
+            link="/seminar"
           />
           <Card
             heading={"Counselling"}
@@ -129,7 +129,7 @@ export default function OurServices() {
             description={
               "Personalized career counseling services to help you navigate your career path."
             }
-            link="/services#counselling"
+            link="/counselling"
           />
           <Card
             heading={"CareerCraft"}
