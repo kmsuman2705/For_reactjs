@@ -1,41 +1,51 @@
 import React from "react";
 import { Container, Stack, Heading, Box, Text, useBreakpointValue } from "@chakra-ui/react";
 
-const CCSection3 = () => {
+const CollegeSolutions = () => {
   const cardData = [
     {
-      title: "Skill Enhancement",
+      title: "Expansive Network",
       imageUrl:
-        "https://www.avanse.com/viewPagesAssets/img/skill-enhancement-loan.png",
+        "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       description:
-        "TalentConnect provides courses and certifications in high-demand technical skills and offers advanced certification programs for career advancement and specialization.",
+        "Connect with numerous top-tier employers seamlessly through our extensive network, bringing a wide range of opportunities directly to you.",
     },
     {
-      title: "High-Skilled Mentor",
+      title: "Innovative Platform",
       imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7OAw1nW0KLSzM8b6otJgqEhxtFyhfWfBhYg&s",
+        "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       description:
-        "TalentConnect provides high-paid skilled professional panels which give end-to-end guidance to the candidates.",
+        "Utilize advanced tools and features to streamline the recruitment process, making it more efficient and effective for both colleges and employers.",
+    },
+    {
+      title: "Comprehensive Training",
+      imageUrl:
+        "https://images.pexels.com/photos/5904046/pexels-photo-5904046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description:
+        "Offer targeted training programs to bridge skill gaps and ensure graduates are prepared with industry-specific skills necessary for their careers.",
+    },
+    {
+      title: "Data-Driven Insights",
+      imageUrl:
+        "https://images.pexels.com/photos/5439433/pexels-photo-5439433.jpeg?auto=compress&cs=tinysrgb&w=600",
+      description:
+        "Access valuable feedback and insights to enhance your career services and make data-informed decisions to improve recruitment strategies.",
     },
   ];
 
-  const cardWidth = useBreakpointValue({ base: "100%", md: "45%", lg: "30%" }); // Adjust width based on breakpoints
-  const cardHeight = useBreakpointValue({ base: "auto", md: "50vh" }); // Adjust height based on breakpoints
-
   return (
-    <Container maxW="full" bg="gray.100" mt={135} minH="80vh">
+    <Container maxW={"full"} bg="gray.100" mt={20} minH={"80vh"}>
       <Heading
-        fontFamily="ClashDisplay"
+        fontFamily={"ClashDisplay"}
         fontSize={{ base: "2xl", sm: "4xl" }}
         fontWeight="bold"
         color="blue.400"
         textAlign="center"
-        mb={8}
-        padding={10}
-      >
-        CareerCraft’s Key Benefits
-      </Heading>
       
+        mb={20}
+      >
+        TalentConnect Solutions for Colleges
+      </Heading>
       <Stack
         direction={useBreakpointValue({ base: "column", md: "row" })}
         justify="space-around"
@@ -44,9 +54,8 @@ const CCSection3 = () => {
         {cardData.map((card, index) => (
           <Box
             key={index}
-            w={cardWidth}
-            h={cardHeight}
-            minH={{ base: "40vh", md: "50vh" }} // Set a minimum height
+            w={"full"}
+            h={"50vh"}
             overflow="hidden"
             position="relative"
             borderRadius="xl"
@@ -95,17 +104,10 @@ const CCSection3 = () => {
               alignItems="center"
               textAlign="center"
             >
-              <Heading
-                fontFamily="ClashDisplay"
-                textTransform="uppercase"
-                color="blue.400"
-                as="h3"
-                size="md"
-                mb={2}
-              >
+              <Heading fontFamily={"ClashDisplay"} textTransform={"uppercase"} color="blue.400" as="h3" size="md" mb={2}>
                 {card.title}
               </Heading>
-              <Text textAlign="justify">{card.description}</Text>
+              <Text textAlign={"center"}>{card.description}</Text>
             </Box>
             <Box
               position="relative"
@@ -119,7 +121,7 @@ const CCSection3 = () => {
               className="titleBox"
               textAlign="center"
             >
-              <Heading fontFamily="ClashDisplay" as="h3" size="md">
+              <Heading fontFamily={"ClashDisplay"} as="h3" size="md">
                 {card.title}
               </Heading>
             </Box>
@@ -130,4 +132,4 @@ const CCSection3 = () => {
   );
 };
 
-export default CCSection3;
+export default CollegeSolutions;
