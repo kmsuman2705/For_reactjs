@@ -47,7 +47,7 @@ export default function OnCampus() {
               maxW="lg"
             >
               <Heading fontFamily={"ClashDisplay"} fontSize={{ base: "4xl", md: "5xl" }} fontWeight="bold" color="blue.400">
-              Navigate Your Future: Expert Career Counseling
+              Navigate Your Future: Expert Career Counselling
               </Heading>
               <Text mt={4} fontSize={{ base: "md", md: "lg" }} color="gray.800">
               Unlock your potential with personalized career guidance. Our expert counselors provide tailored advice, resources, and strategies to help you achieve your professional goals and build a fulfilling career.
