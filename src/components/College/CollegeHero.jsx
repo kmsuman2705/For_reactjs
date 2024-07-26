@@ -45,6 +45,7 @@ export default function CollegeHero() {
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: "6xl", md: "6xl" })}
             textAlign="center"
+            fontFamily={"ClashDisplay"}
           >
             Empower Your College’s Recruitment<br /> with TalentConnect
           </Text>
