@@ -23,6 +23,7 @@ import Seminar from "./components/Service/Seminar/Seminar.jsx"
 import Counselling from "./components/Service/Counselling/Counselling.jsx"
 import Workforce from "./components/Service/Workforce/Workforce.jsx"
 import CareerCraft from "./components/Service/CareerCraft/CareerCraft.jsx"
+import AffiliateForm from "./components/Affiliate/AffiliateForm.jsx";
 
 
 
@@ -59,6 +60,7 @@ const App = () => {
           
 
           <Route path="/affiliate" element={<Affiliate />} />
+          <Route path="/affiliate-form" element={<AffiliateForm />} />
 
           <Route path="/contact" element={<Contact />} />
 

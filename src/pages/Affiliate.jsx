@@ -1,14 +1,17 @@
 import React from "react";
-import AffiliateInfo from "../components/Affiliate/AffiliateInfo";
+
+import AffiliateHero from "../components/Affiliate/AffiliateHero";
+import AffiliateIntro from "../components/Affiliate/AffiliateIntro";
+import AffiliatePage from "../components/Affiliate/AffiliatePage";
 
 const Affiliate = () => {
   return (
     <div>
-      {/* Your Affiliate page content here
-      <AffiliateInfo />
-      */}
-      
-
+      {/* Your Affiliate page content here */}
+      <AffiliateHero />  
+        
+      <AffiliateIntro />
+      <AffiliatePage /> 
     </div>
   );
 };
