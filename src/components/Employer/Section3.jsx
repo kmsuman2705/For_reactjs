@@ -14,7 +14,7 @@ import { CheckIcon } from '@chakra-ui/icons'
 
 function Section3() {
   return (
-    <Box p={20}  bg={'gray.100'} m={5} borderRadius={10}>
+    <Box p={20}  bg={'gray.100'} m={3} borderRadius={10}>
       <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
         <Heading fontSize={'3xl'} color={'blue.400'}>Challenges Faced by Companies in Hiring Freshers</Heading>
         <Text color={'gray.600'} fontSize={'x'}>

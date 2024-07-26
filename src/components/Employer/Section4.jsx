@@ -15,13 +15,12 @@ function Section4() {
           spacing={5}
           alignItems={{ base: 'flex-start', md: 'center' }}
           justifyContent="space-between"
-          width={'95%'}
+
           rounded="lg"
           boxShadow="md"
           bg={useColorModeValue('gray.100', 'gray.700')}
           p={{ base: 8, md: 16 }}
-          mt={'10'}
-          ml={'10'}
+          m={'6'}
         >
           <Box>
             <chakra.h1 fontSize="4xl" lineHeight={1.2} fontWeight="bold">
@@ -55,18 +54,6 @@ function Section4() {
               _hover={{ bgGradient: 'linear(to-l, #0ea5e9,#2563eb)' }}
             >
               Get Started
-            </Button>
-            <Button
-              as={Link}
-              href=""
-              size="lg"
-              rounded="md"
-              mb={{ base: 2, sm: 0 }}
-              bg={useColorModeValue('gray.200', 'gray.600')}
-              _hover={{ bg: useColorModeValue('gray.300', 'gray.500') }}
-              lineHeight={1}
-            >
-              Learn more
             </Button>
           </Stack>
         </Stack>
