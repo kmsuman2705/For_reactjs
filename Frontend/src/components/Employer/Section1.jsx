@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Flex, Button, Text, VStack, useBreakpointValue,Link } from '@chakra-ui/react'
+import { Stack, Flex, Button, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
 
 function Section1() {
   return (
@@ -16,11 +16,11 @@ function Section1() {
         justify={'center'}
         px={useBreakpointValue({ base: 4, md: 8 })}
         bgGradient={'linear(to-r, blackAlpha.600, transparent)'}>
-        <Stack maxW={'2xl'} align={'flex-start'} spacing={6} marginRight={'500px'} marginTop={"120px"}>
+        <Stack maxW={'2xl'} align={'flex-start'} spacing={6} >
           <Text
             color={'white'}
             fontWeight={700}
-            lineHeight={0.5}
+            lineHeight={1}
             fontSize={useBreakpointValue({ base: '4xl', md: '5xl' })}>
             Make your next hire with
           </Text>
@@ -40,20 +40,11 @@ function Section1() {
           </Text>
           <Stack direction={'row'}>
             <Button
-              as={Link}
-              href="company-form"
               bg={'blue.400'}
               rounded={'full'}
               color={'white'}
               _hover={{ bg: 'blue.500' }}>
               Sign Up
-            </Button>
-            <Button
-              bg={'whiteAlpha.300'}
-              rounded={'full'}
-              color={'white'}
-              _hover={{ bg: 'whiteAlpha.500' }}>
-              Know more
             </Button>
           </Stack>
         </Stack>
