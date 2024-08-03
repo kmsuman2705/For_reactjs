@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Box,
   Flex,
@@ -14,6 +14,8 @@ import {
   useBreakpointValue,
   Icon,
 } from "@chakra-ui/react";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 import axios from "axios";
 
 const avatars = [
@@ -46,16 +48,26 @@ const Blur = (props) => {
   );
 };
 
-export default function PostResume() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    resume: null,
-  });
+const validationSchema = Yup.object({
+  name: Yup.string()
+    .required("Name is required")
+    .matches(/^[A-Za-z\s]+$/, "Name should only contain letters and spaces"),
+  email: Yup.string()
+    .email("Invalid email")
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
+      "Email must be a valid Gmail address"
+    )
+    .required("Email is required"),
+  phone: Yup.string()
+    .matches(/^\d{10}$/, "Phone number must be exactly 10 digits")
+    .required("Phone number is required"),
+  resume: Yup.mixed().required("Resume is required"),
+});
 
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+export default function PostResume() {
+  const [message, setMessage] = useState(null);
+  const fileInputRef = useRef();
 
   const avatarSize = useBreakpointValue({ base: "md", md: "lg" });
   const minSize = useBreakpointValue({ base: "44px", md: "60px" });
@@ -66,52 +78,37 @@ export default function PostResume() {
   });
   const blurZIndex = useBreakpointValue({ base: -1, md: -1, lg: 0 });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleFileChange = (e) => {
-    setFormData({ ...formData, resume: e.target.files[0] });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { name, email, phone, resume } = formData;
-
-    // Validations
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-    if (!emailRegex.test(email)) {
-      setError('Email must be a valid Gmail address (ending with @gmail.com).');
-      setSuccess('');
-      return;
-    }
-
-    const phoneRegex = /^\d{10}$/;
-    if (!phoneRegex.test(phone)) {
-      setError('Phone number must be exactly 10 digits.');
-      setSuccess('');
-      return;
-    }
-
+  const handleSubmit = async (values, actions) => {
     const data = new FormData();
-    data.append('name', name);
-    data.append('email', email);
-    data.append('phone', phone);
-    data.append('resume', resume);
+    data.append("name", values.name);
+    data.append("email", values.email);
+    data.append("phone", values.phone);
+    data.append("resume", values.resume);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/resumes/submit', data, {
+      await axios.post("http://localhost:5000/api/resumes/submit", data, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
-      setSuccess('Resume uploaded successfully!');
-      setError('');
-    } catch (err) {
-      setError('Error uploading resume.');
-      setSuccess('');
+      setMessage({ text: "Resume uploaded successfully!", type: "success" });
+      actions.resetForm(); // Resets the form fields except file input
+
+      // Clear the file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    } catch (error) {
+      setMessage({ text: "Error uploading resume.", type: "error" });
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
     }
+    actions.setSubmitting(false);
   };
 
   return (
@@ -201,120 +198,138 @@ export default function PostResume() {
           spacing={{ base: 8 }}
           maxW={{ lg: "lg" }}
         >
-          <Stack spacing={4}>
-            <Heading
-              color={"gray.800"}
-              lineHeight={1.1}
-              fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+          <Formik
+            initialValues={{
+              name: "",
+              email: "",
+              phone: "",
+              resume: null,
+            }}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ setFieldValue, isSubmitting, errors, touched }) => (
+              <Form>
+                <Stack spacing={4}>
+                  <Field name="name">
+                    {({ field }) => (
+                      <Input
+                        {...field}
+                        type="text"
+                        placeholder="Full Name"
+                        bg={"gray.100"}
+                        border={0}
+                        color={"gray.500"}
+                        _placeholder={{
+                          color: "gray.500",
+                        }}
+                      />
+                    )}
+                  </Field>
+                  {errors.name && touched.name && (
+                    <Text color="red.500">{errors.name}</Text>
+                  )}
+
+                  <Field name="email">
+                    {({ field }) => (
+                      <Input
+                        {...field}
+                        type="email"
+                        placeholder="Gmail ID"
+                        bg={"gray.100"}
+                        border={0}
+                        color={"gray.500"}
+                        _placeholder={{
+                          color: "gray.500",
+                        }}
+                      />
+                    )}
+                  </Field>
+                  {errors.email && touched.email && (
+                    <Text color="red.500">{errors.email}</Text>
+                  )}
+
+                  <Field name="phone">
+                    {({ field }) => (
+                      <Input
+                        {...field}
+                        type="text"
+                        placeholder="Phone number"
+                        bg={"gray.100"}
+                        border={0}
+                        color={"gray.500"}
+                        _placeholder={{
+                          color: "gray.500",
+                        }}
+                      />
+                    )}
+                  </Field>
+                  {errors.phone && touched.phone && (
+                    <Text color="red.500">{errors.phone}</Text>
+                  )}
+
+                  <Field name="resume">
+                    {() => (
+                      <div>
+                        <input
+                          type="file"
+                          accept=".pdf,.doc,.docx"
+                          onChange={(event) => {
+                            setFieldValue("resume", event.currentTarget.files[0]);
+                          }}
+                          ref={fileInputRef}
+                          style={{
+                            padding: "8px",
+                            border: "none",
+                            borderRadius: "4px",
+                            background: "#f7fafc",
+                          }}
+                        />
+                        <Text fontSize="sm" color="gray.500" mt={2}>
+                          Upload your resume in .pdf or .docx format.
+                        </Text>
+                      </div>
+                    )}
+                  </Field>
+                  {errors.resume && touched.resume && (
+                    <Text color="red.500">{errors.resume}</Text>
+                  )}
+                </Stack>
+                <Button
+                  type="submit"
+                  isLoading={isSubmitting}
+                  fontFamily={"heading"}
+                  mt={8}
+                  w={"full"}
+                  bgGradient="linear(to-r, red.400,pink.400)"
+                  color={"white"}
+                  _hover={{
+                    bgGradient: "linear(to-r, red.400,pink.400)",
+                    boxShadow: "xl",
+                  }}
+                >
+                  Submit
+                </Button>
+              </Form>
+            )}
+          </Formik>
+          {message && (
+            <Text
+              color={message.type === "success" ? "green.500" : "red.500"}
+              textAlign="center"
             >
-              Upload Your Resume
-              <Text
-                as={"span"}
-                bgGradient="linear(to-r, red.400,pink.400)"
-                bgClip="text"
-              >
-                !
-              </Text>
-            </Heading>
-            <Text color={"gray.500"} fontSize={{ base: "sm", sm: "md" }}>
-              Upload your resume and get noticed by top employers. Our platform
-              connects you with job opportunities that align with your profile.
+              {message.text}
             </Text>
-          </Stack>
-          <Box as={"form"} mt={10} onSubmit={handleSubmit}>
-            <Stack spacing={4}>
-              <Input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                pattern="[A-Za-z\s]+"
-                title="Name should only contain letters and spaces"
-                placeholder="Full Name"
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-              />
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                pattern="^[a-zA-Z0-9._%+-]+@gmail.com$"
-                title="Email must be a Gmail address"
-                placeholder="Gmail ID"
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-              />
-              <Input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                maxLength="10"
-                pattern="\d{10}"
-                title="Phone number must be exactly 10 digits"
-                placeholder="Phone Number"
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-              />
-              <Input
-                type="file"
-                id="resume"
-                name="resume"
-                onChange={handleFileChange}
-                required
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-              />
-            </Stack>
-            <Button
-              fontFamily={"heading"}
-              mt={8}
-              w={"full"}
-              bgGradient="linear(to-r, red.400,pink.400)"
-              color={"white"}
-              _hover={{
-                bgGradient: "linear(to-r, red.400,pink.400)",
-                boxShadow: "xl",
-              }}
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Box>
-          {error && <Text color="red.500">{error}</Text>}
-          {success && <Text color="green.500">{success}</Text>}
+          )}
         </Stack>
       </Container>
       <Blur
-        width={blurWidth}
-        zIndex={blurZIndex}
         position={"absolute"}
         top={-10}
         left={-10}
         style={{ filter: "blur(70px)" }}
+        zIndex={blurZIndex}
+        width={blurWidth}
       />
     </Box>
   );

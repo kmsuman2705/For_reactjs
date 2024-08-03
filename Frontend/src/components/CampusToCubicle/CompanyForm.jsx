@@ -59,6 +59,7 @@ const CompanyForm = () => {
           duration: 5000,
           isClosable: true,
         });
+        formik.resetForm(); // Reset form fields after successful submission
       } catch (error) {
         toast({
           title: "An error occurred.",

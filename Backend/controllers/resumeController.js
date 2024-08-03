@@ -1,4 +1,4 @@
-const Resume = require('../models/Resume'); // Import the Resume model
+const Resume = require("../models/Resume"); // Import the Resume model
 const { validationResult } = require("express-validator");
 
 // Controller function to handle resume submission
@@ -8,7 +8,21 @@ const submitResume = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
+
   try {
+    // Check for existing resume with the same email or phone number
+    const existingResume = await Resume.findOne({
+      $or: [{ email: req.body.email }, { phone: req.body.phone }],
+    });
+
+    if (existingResume) {
+      return res
+        .status(400)
+        .json({
+          message: "A resume with this email or phone number already exists.",
+        });
+    }
+
     // Create a new resume document using data from the request
     const newResume = new Resume({
       name: req.body.name,
@@ -39,8 +53,8 @@ const getResumes = async (req, res) => {
     res.status(200).json(resumes);
   } catch (error) {
     // Handle errors and send an error response
-    console.error('Error fetching resumes:', error);
-    res.status(500).send('Error fetching resumes');
+    console.error("Error fetching resumes:", error);
+    res.status(500).send("Error fetching resumes");
   }
 };
 
@@ -52,15 +66,15 @@ const getResumeById = async (req, res) => {
 
     if (!resume) {
       // If no resume is found, send a 404 response
-      return res.status(404).send('Resume not found');
+      return res.status(404).send("Resume not found");
     }
 
     // Send the resume as a JSON response
     res.status(200).json(resume);
   } catch (error) {
     // Handle errors and send an error response
-    console.error('Error fetching resume:', error);
-    res.status(500).send('Error fetching resume');
+    console.error("Error fetching resume:", error);
+    res.status(500).send("Error fetching resume");
   }
 };
 
